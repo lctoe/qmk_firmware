@@ -21,12 +21,9 @@ enum planck_layers {
   _L1,
   _L2,
   _L3,
-  _Ctrl
+  _Ctrl,
   _Dvorak
 };
-
-#define LOWER MO(_LOWER)
-#define RAISE MO(_RAISE)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -152,10 +149,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, KC_LGUI, KC_LALT, KC_PSCR, KC_SPC,  KC_TAB,  KC_SPC,  MO(_L2), MO(_L1), KC_LEFT, KC_DOWN, KC_RGHT
 )
 };
-
-layer_state_t layer_state_set_user(layer_state_t state) {
-  return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
-}
 
 void encoder_update(bool clockwise) { 
   if(IS_LAYER_ON(_L3)) // Letter/Word Scrolling and Selecting
