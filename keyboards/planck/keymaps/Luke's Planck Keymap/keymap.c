@@ -55,10 +55,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_L0] = LAYOUT_planck_grid(
-    KC_ESC,   KC_QUOT, KC_COMM, KC_DOT,  KC_P,        KC_Y,    KC_F,    KC_G,       KC_C,    KC_R,    KC_L,    KC_SLSH,
-    KC_MUTE,  KC_A,    KC_O,    KC_E,    KC_U,        KC_I,    KC_D,    KC_H,       KC_T,    KC_N,    KC_S,    KC_MINS,
-    KC_LSFT,  KC_SCLN, KC_Q,    KC_J,    KC_K,        KC_X,    KC_B,    KC_M,       KC_W,    KC_V,    KC_Z,    KC_ENT ,
-    MO(_Ctrl),KC_LGUI, KC_LALT, KC_TAB , MO(_Lower),  KC_BSPC, KC_SPC,  MO(_Raise), KC_PSCR, KC_LEFT, KC_DOWN, KC_RGHT
+    KC_ESC,            KC_QUOT, KC_COMM, KC_DOT,  KC_P,        KC_Y,    KC_F,    KC_G,       KC_C,    KC_R,    KC_L,    KC_SLSH,
+    KC_MUTE,           KC_A,    KC_O,    KC_E,    KC_U,        KC_I,    KC_D,    KC_H,       KC_T,    KC_N,    KC_S,    KC_MINS,
+    KC_LSFT,           KC_SCLN, KC_Q,    KC_J,    KC_K,        KC_X,    KC_B,    KC_M,       KC_W,    KC_V,    KC_Z,    KC_ENT ,
+    LM(_Ctrl, MOD_CTL),KC_LGUI, KC_LALT, KC_TAB , MO(_Lower),  KC_BSPC, KC_SPC,  MO(_Raise), KC_PSCR, KC_LEFT, KC_DOWN, KC_RGHT
 ),
 
 /* Raise
@@ -116,20 +116,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 /* Ctrl
  * ,-----------------------------------------------------------------------------------.
- * |      |      |Ctrl <|Ctrl >|Ctrl P|      |      |Ctrl -|Ctrl +|      |      |      |
+ * |      |      | Sub  |Super |Print |      |      |ZoomOt|ZoomIn|      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |Ctrl A|      |      |Ctrl F|      |      |Ctrl B|Ctrl U|Ctrl I|      |      |
+ * |      |Select|      |      | Find |      |      | Bold |Udline|Italic|      |      | ******Print Whole Screen                           
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |Ctrl Z|Ctrl Y|Ctrl C|Ctrl V|      |      |      |      |      |      |      |
+ * |      | Undo | Redo | Copy |Paste |      |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |CtrlPS|      |      |      |      |      |      |
+ * |      |      |      |      |      |******|      |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_Ctrl] = LAYOUT_planck_grid(
-    _______, _______, C(KC_COMM), C(KC_DOT), C(KC_Z), _______,    _______, C(KC_MINS), C(KC_EQL), _______,    _______, _______,
-    _______, C(KC_A), _______,    _______,   C(KC_F), _______,    _______, C(KC_B),    C(KC_U),   C(KC_I),    _______, _______,
-    _______, C(KC_Z), C(KC_Y),    C(KC_C),   C(KC_V), _______,    _______, _______,    _______,   _______,    _______, _______,
-    _______, _______, _______,    _______,   _______, C(KC_PSCR), _______, _______,    _______,   _______,    _______, _______,
+    _______, _______, KC_COMM,    KC_DOT,    KC_Z,    _______,    _______, KC_MINS,    KC_EQL,    _______,    _______, _______,
+    _______, KC_A,    _______,    _______,   KC_F,    _______,    _______, KC_B,       KC_U,      KC_I,       _______, _______,
+    _______, KC_Z,    KC_Y,       KC_C,      KC_V,    _______,    _______, _______,    _______,   _______,    _______, _______,
+    _______, _______, _______,    _______,   _______, KC_PSCR,    _______, _______,    _______,   _______,    _______, _______,
 ),   
 /* QWERTY
  * ,-----------------------------------------------------------------------------------.
