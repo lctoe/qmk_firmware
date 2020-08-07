@@ -151,7 +151,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 void encoder_update(bool clockwise) { 
-  if(IS_LAYER_ON(_L3)) // Letter/Word Scrolling and Selecting
+  if(IS_LAYER_ON(_Ctrl)) // Letter/Word Scrolling and Selecting
   {
     if (clockwise) {
         tap_code(KC_RGHT);
@@ -159,7 +159,7 @@ void encoder_update(bool clockwise) {
         tap_code(KC_LEFT);
     }
   }
-  else if(IS_LAYER_ON(_L2)) // Zooming
+  else if(IS_LAYER_ON(_Lower)) // Zooming
   {
    if (clockwise) {
         tap_code16(C(KC_PPLS));
@@ -167,7 +167,7 @@ void encoder_update(bool clockwise) {
         tap_code16(C(KC_PMNS));
     }
   }
-  else if(IS_LAYER_ON(_L1)) // History Scrubbing
+  else if(IS_LAYER_ON(_Raise)) // History Scrubbing
   {
    if (clockwise) {
         tap_code16(C(KC_Y));
