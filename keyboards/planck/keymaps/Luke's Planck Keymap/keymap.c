@@ -31,9 +31,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // LAYERS:
 // L0 is the default layer.
-// L1 is accessed when the L1 key is being held.
-// L2 is accessed when the L2 key is being held.
-// L3 is accessed when the L1 key is being held, and the L2 key is pressed.
+// Raise is accessed when the L1 key is being held.
+// Lower is accessed when the L2 key is being held.
+// The number layer is accessed when the L1 key is being held, and the L2 key is pressed.
 // The Ctrl layer is accessed when the Ctrl key is being held.
 // The QWERTY layer is accessed when the L2 key is being held, and the L1 key is pressed.
 
@@ -42,6 +42,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // The Ctrl key is NOT an actual Ctrl key, but rather a momentary layer switch. This allows for you to still copy and paste (among other things) using the left hand. (Most) keys used on the Ctrl layer are in their QWERTY locations.
 // The right thumb is meant to hover or rest over the space key, while the left thumb is meant to hover over the backspace key.
 // There is a rotary encoder where the "Mute" key is. While the function of the turning of the encoder changes depending on which layer you're on, when you press down on the encoder, it will always toggle mute.
+// Shifted number keys (on the Number layer) are slightly moved around for a combination of efficiency and some compromises for muscle memory. 
+// The Lower key on the QWERTY layer acts as space upon pressing it so the left hand can sit comfortably while gaming and still jump while in a resting position.
 	
 /* L0
  * ,-----------------------------------------------------------------------------------.
@@ -151,15 +153,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 void encoder_update(bool clockwise) { 
-  if(IS_LAYER_ON(_Ctrl)) // Letter/Word Scrolling and Selecting
-  {
-    if (clockwise) {
-        tap_code(KC_RGHT);
-    } else {
-        tap_code(KC_LEFT);
-    }
-  }
-  else if(IS_LAYER_ON(_Lower)) // Zooming
+  if(IS_LAYER_ON(_Number)) // Zooming
   {
    if (clockwise) {
         tap_code16(C(KC_PPLS));
@@ -167,12 +161,20 @@ void encoder_update(bool clockwise) {
         tap_code16(C(KC_PMNS));
     }
   }
-  else if(IS_LAYER_ON(_Raise)) // History Scrubbing
+  else if(IS_LAYER_ON(_Lower)) // History Scrubbing
   {
    if (clockwise) {
         tap_code16(C(KC_Y));
     } else {
         tap_code16(C(KC_Z));
+    }
+  }
+  else if(IS_LAYER_ON(_Raise)) // Letter/Word Scrolling and Selecting
+  {
+    if (clockwise) {
+        tap_code(KC_RGHT);
+    } else {
+        tap_code(KC_LEFT);
     }
   }
   else if(IS_LAYER_ON(_L0)) // Volume (Base)
@@ -184,5 +186,8 @@ void encoder_update(bool clockwise) {
     }
  }
 }
+
+
+
 
 
