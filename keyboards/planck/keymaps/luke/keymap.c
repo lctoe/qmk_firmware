@@ -29,24 +29,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // This keymap is designed to move most common functions and actions to your fingers, as opposed to having to move your fingers to the keys, like on a larger board. However, some functions, like Shift and Ctrl, are not relocated for the sake of muscle memory.
 
-//The following notes are outdated and have not yet been updated:
-
 // LAYERS:
 // L0 is the default layer.
-// Raise is accessed when the L1 key is being held.
-// Lower is accessed when the L2 key is being held.
-// The number layer is accessed when the L1 key is being held, and the L2 key is pressed.
+// Raise is accessed when the Raise key is being held.
+// Lower is accessed when the Lower key is being held, and can alternatively be toggled by tapping the Lower key once.
+// The Function layer is accessed when the Function key is being held.
 // The Ctrl layer is accessed when the Ctrl key is being held.
-// The QWERTY layer is accessed when the L2 key is being held, and the L1 key is pressed.
+// The QWERTY layer is toggled by tapping the QWERTY key once.
 
 // NOTES:
-// On layers 3 and the QWERTY layer, the L1 and L2 keycodes are present instead of being transparent, because you need access to those layers in order to return to L0.
-// The Ctrl key is NOT an actual Ctrl key, but rather a momentary layer switch. This allows for you to still copy and paste (among other things) using the left hand. (Most) keys used on the Ctrl layer are in their QWERTY locations.
+// The Ctrl key is NOT an actual Ctrl key, but rather a momentary layer switch. This allows for you to still copy and paste (among other things) using the left hand, which is not possible in Dvorak. 
+	// (Most) keys used on the Ctrl layer are in their QWERTY locations.
 // The right thumb is meant to hover or rest over the space key, while the left thumb is meant to hover over the backspace key.
-// There is a rotary encoder where the "Mute" key is. While the function of the turning of the encoder changes depending on which layer you're on, when you press down on the encoder, it will always toggle mute.
-// Shifted number keys (on the Number layer) are slightly moved around for a combination of efficiency and some compromises for muscle memory. 
-// The Lower key on the QWERTY layer acts as space upon pressing it so the left hand can sit comfortably while gaming and still jump while in a resting position.
-// Ctrl + M as a mic muting function is a keybind set in discord; it is not universal for the rest of the computer.
+// There is a rotary encoder in the top left. Both the function of the encoder being rotated, and the encoder being pressed, vary based on what layer you are on.
+// The Lower key on the QWERTY layer acts as space upon tapping it once so the left hand can sit comfortably while gaming and still jump while in a resting position. 
+	//This is exclusive to me, after I observed that when in games, my thumb presses the space bar under the "U" key
+// Ctrl + D as a mic muting function is a keybind set in discord; it is not universal for the rest of the computer.
+	// "D" is chosen as the key because it is the unchangeable keybind for mute in Google Meets, which I will be using heavily during high school and a pandemic :(
+	//Ctrl + E is the unchangeable keybind for camera on/off in Google Meets, hence its function being listed as "MutVid"
+// The reason many keycodes or functions are on specific spaces on layers rather than everything being on the lowest layer possible is because it is designed that way.
+	// For example, it wouldn't make sense to put Print Screen next to Delet on the Raise layer just because that space is open on Raise. 
+	// The reason it doesn't make sense is because it is designed so if you are going to press a key with your right hand (i.e. Print Screen), then it wouldn't make sense to have that layer's key ALSO on the right hand. 
+	// That's why you hold Raise with your left hand and press Delete with your left hand, or you hold Lower with your left hand and press Print Screen with your right hand.
+	// This concept of hand alternation is applied all over the keyboard, from things like the rotary encoder, to niche things like Delete and Print Screen.
 	
 /* L0
  * ,-----------------------------------------------------------------------------------.
@@ -123,7 +128,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * |      |      | Sub  |Super |Refres|Print |      |ZoomOt|ZoomIn|      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |Select|      |      | Find |      |      | Bold |Udline|Italic|      |      | ******Print Whole Screen                           
+ * |      |Select|      |MutVid| Find |      |      | Bold |Udline|Italic|      |      | ******Print Whole Screen                           
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      | Undo | Redo | Copy |Paste |      |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -132,7 +137,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_Ctrl] = LAYOUT_planck_grid(
     _______, _______, KC_COMM, KC_DOT,  KC_R,    KC_P,    _______, KC_MINS, KC_EQL,  _______, _______, _______,
-    _______, KC_A,    _______, _______, KC_F,    _______, _______, KC_B,    KC_U,    KC_I,    _______, _______,
+    _______, KC_A,    _______, KC_E,    KC_F,    _______, _______, KC_B,    KC_U,    KC_I,    _______, _______,
     _______, KC_Z,    KC_Y,    KC_C,    KC_V,    _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, KC_PSCR, _______, _______, _______, _______, _______
 ),  
