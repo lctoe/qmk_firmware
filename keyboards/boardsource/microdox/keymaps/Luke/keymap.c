@@ -153,3 +153,81 @@ void encoder_update_user(uint8_t index, bool clockwise) {
     		}
  		}
 }
+
+#ifdef OLED_DRIVER_ENABLE
+void render_status(void) {
+    oled_write_P(PSTR("Layer: "), false);
+    // Host Keyboard Layer Status
+    switch (get_highest_layer(layer_state)) {
+        case _Base:
+            oled_write_P(PSTR("Base\n"), false);
+            break;
+        case _Raise:
+            oled_write_P(PSTR("Raise\n"), false);
+            break;
+        case _Lower:
+            oled_write_P(PSTR("Lower\n"), false);
+            break;
+        case _Ctrl:
+            oled_write_P(PSTR("Ctrl\n"), false);
+            break;
+        case _Game:
+            oled_write_P(PSTR("Game\n"), false);
+            break;
+        default:
+            // Or use the write_ln shortcut over adding '\n' to the end of your string
+            oled_write_ln_P(PSTR("Undefined"), false);
+    }
+
+    // Host Keyboard LED Status
+    led_t led_state = host_keyboard_led_state();
+    oled_write_P(led_state.caps_lock ? PSTR("CAP ") : PSTR("    "), false);
+}
+void render_right(void) {
+    oled_write_P(PSTR("Layer: "), false);
+    // Host Keyboard Layer Status
+    switch (get_highest_layer(layer_state)) {
+        case _Base:
+            oled_write_P(PSTR("Base\n"), false);
+            break;
+        case _Raise:
+            oled_write_P(PSTR("Raise\n"), false);
+            break;
+        case _Lower:
+            oled_write_P(PSTR("Lower\n"), false);
+            break;
+        case _Ctrl:
+            oled_write_P(PSTR("Ctrl\n"), false);
+            break;
+        case _Game:
+            oled_write_P(PSTR("Game\n"), false);
+            break;
+        default:
+            // Or use the write_ln shortcut over adding '\n' to the end of your string
+            oled_write_ln_P(PSTR("Undefined"), false);
+    }
+
+    // Host Keyboard LED Status
+    led_t led_state = host_keyboard_led_state();
+    oled_write_P(led_state.caps_lock ? PSTR("CAP ") : PSTR("    "), false);
+}
+#endif
+
+#ifdef OLED_DRIVER_ENABLE
+oled_rotation_t oled_init_user(oled_rotation_t rotation) {
+    if (!is_keyboard_master()) {
+        return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
+    }
+
+    return rotation;
+}
+
+void oled_task_user(void) {
+    if (is_keyboard_master()) {
+        render_status();  // Renders the current keyboard state (layer, lock, caps, scroll, etc)
+    } else {
+        render_right();
+    }
+}
+#endif
+
