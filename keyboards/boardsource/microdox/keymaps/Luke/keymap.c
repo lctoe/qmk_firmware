@@ -34,7 +34,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------|				|------+------+------+------+------|
  * |  ; : |   Q  |   J  |   K  |   X  |				|   B  |   M  |   W  |   V  |   Z  |
  * `-------------+------+------+------|				|------+------+------+-------------'
- * 				       | Mute |OS/Lwr|BS/Sft|				|Sp/Ctl| Raise| Game |
+ * 				       | Mute |OS/Lwr|BS/Ctl|				|Sp/Sft| Raise| Game |
  *				       `--------------------'				`--------------------'
  */
 [_Base] = LAYOUT_split_3x5_3(
@@ -46,74 +46,74 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Raise Layer
  * ,----------------------------------.				,----------------------------------.
- * |      |      |      |      |      |				|      |   ?  |   /  |   (  |   )  |
+ * |   1  |   2  |   3  |   4  |   5  |       |   6  |   7  |   8  |   9  |   0  |
  * |------+------+------+------+------|				|------+------+------+------+------|
- * |   1  |   2  |   3  |   4  |   5  |				|   6  |   7  |   8  |   9  |   0  |
+ * |   !  |   @  |   #  |   $  |   %  |       |   ^  |   &  |   *  |   (  |   )  |
  * |------+------+------+------+------|				|------+------+------+------+------|
- * |   !  |   @  |   #  |   $  |   %  |				|   ^  |   &  |   *  |   [  |   ]  |
+ * |      |      |      |      |      |       |      |      |      |      |      |
  * `-------------+------+------+------|				|------+------+------+-------------'
- * 				       |Ps/Ply|OS/Lwr|BS/Sft|				|Sp/Ctl| Raise| Game |
+ * 				       |Ply/Ps|OS/Lwr|BS/Ctl|       |Sp/Sft| Raise| Game |
  *				       `--------------------'				`--------------------'
- */
+ */  
 [_Raise] = LAYOUT_split_3x5_3(
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,      XXXXXXX, KC_QUES, KC_SLSH, KC_LBRC, KC_RBRC,
   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,         KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
   KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                     KC_MPLY, _______, _______,      _______, _______, _______,
 ),
 
 /* Lower Layer
  * ,----------------------------------.				,----------------------------------.
- * |  F1  |  F2  |  F3  |  F4  |      |				|   |  |   `  |   ~  |   {  |   }  |
+ * | Quit |PrtWSc|Delete|PrtSc |MutCam|				|      |   ?  |   /  |  ` ~ |  \ | |
  * |------+------+------+------+------|				|------+------+------+------+------|
- * |  F5  |  F6  |  F7  |  F8  |      |				|   \  |   -  |   _  |   =  |   +  |
+ * |CapsLk|  Tab |  Esc |Enter |MutMic|				|      |   -  |   _  |   =  |   +  |
  * |------+------+------+------+------|				|------+------+------+------+------|
- * |  F9  |  F10 |  F11 |  F12 |      |				|      |      |      |      |      |
+ * |      |      |      |      |      |				|      |   [  |   ]  |   {  |   }  |
  * `-------------+------+------+------|				|------+------+------+-------------'
- * 				       |MutMic|OS/Lwr|BS/Sft|				|Sp/Ctl| Raise| Game |
+ * 				       |      |OS/Lwr|BS/Ctl|       |Sp/Sft| Raise| Game |
  *				       `--------------------'				`--------------------'
  */
 [_Lower] = LAYOUT_split_3x5_3(
-  KC_F1,   KC_F2,   KC_F3,   KC_F4,   XXXXXXX,      KC_PIPE, KC_GRV,  KC_TILD, KC_LCBR, KC_RCBR,
-  KC_F5,   KC_F6,   KC_F7,   KC_F8,   XXXXXXX,      KC_PLUS, KC_MINS, KC_UNDS, KC_EQL,  KC_PLUS,
-  KC_F9,   KC_F10,  KC_F11,  KC_F12,  XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                    C(KC_D), _______, _______,      _______, _______, _______,
+  LALT(KC_F4), C(KC_PSCR), KC_Del,  KC_PSCR, C(KC_E),      XXXXXXX, KC_QUES, KC_SLSH, KC_GRV,  KC_BSLS,
+  KC_CAPS,     KC_TAB,     KC_ESC,  KC_ENT,  C(KC_D),      XXXXXXX, KC_MINS, KC_UNDS, KC_EQL,  KC_PLUS,
+  XXXXXXX,     XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX,      XXXXXXX, KC_LBRC, KC_RBRC, KC_LCBR, KC_RCBR,
+                           XXXXXXX, _______, _______,      _______, _______, _______,
 ),
 
 /* Ctrl Layer
  * ,----------------------------------.				,----------------------------------.
- * |  Esc |  Tab | Undo | Find |Delete|				|Print |ZoomOt|ZoomIn|MutCam|      |
+ * | Down |  Up  | Left |Right | Find |				|FullSc|ZoomOt|ZoomIn|Print |Super |
  * |------+------+------+------+------|				|------+------+------+------+------|
- * |Select|Refres| Copy |Paste |Enter |				|PrtWSc| Bold |Italic|Udline|      |
+ * |Select|Refres| Undo | Copy |Paste |				|      | Bold |Udline|Italic| Sub  |
  * |------+------+------+------+------|				|------+------+------+------+------|
- * | Down |  Up  | Left |Right |PrtScn|				|CapsLk|  Sub | Super|      |      |
+ * |      |      |      |      |      |				|      |      |      |      |      |
  * `-------------+------+------+------|				|------+------+------+-------------'
- * 	      			 |      |OS/Lwr|BS/Sft|				|Sp/Ctl| Raise| Game |
+ * 	      			 |      |OS/Lwr|BS/Ctl|       |Sp/Sft| Raise| Game |
  *				       `--------------------'				`--------------------'
  */
 [_Ctrl] = LAYOUT_split_3x5_3(
-  KC_ESC,  KC_TAB,  C(KC_Z), C(KC_F), KC_DEL,       C(KC_P),    C(KC_MINS), C(KC_EQL,) C(KC_E), XXXXXXX,
-  C(KC_A), C(KC_R), C(KC_C), C(KC_V), KC_ENT,       C(KC_PSCR), C(KC_B,)    C(KC_U),   C(KC_I), XXXXXXX,
-  KC_DOWN, KC_UP,   KC_LEFT, KC_RGHT, KC_PSCR,      KC_CAPS,    C(KC_COMM), C(KC_DOT), XXXXXXX, XXXXXXX,    
+  KC_DOWN, KC_UP,   KC_LEFT, KC_RGHT, C(KC_F),      KC_F11,  C(KC_MINS), C(KC_EQL,) C(KC_P), C(KC_DOT),
+  C(KC_A), C(KC_R), C(KC_Z), C(KC_C), C(KC_V),      XXXXXXX, C(KC_B),    C(KC_U),   C(KC_I), C(KC_COMM),
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,      XXXXXXX, XXXXXXX,    XXXXXXX,   XXXXXXX, XXXXXXX,    
                     XXXXXXX, _______, _______,      _______, _______, _______,
 ),
 
 /* Game Layer
- * ,----------------------------------.				,----------------------------------.
- * |  Tab |   Q  |   W  |   E  |   R  |				|      |      |      |      |      |
- * |------+------+------+------+------|				|------+------+------+------+------|
- * | Shift|   A  |   S  |   D  |   F  |				|      |      |      |      |      |
- * |------+------+------+------+------|				|------+------+------+------+------|
- * | Ctrl |      |      |      |   V  |				|      |      |      |      |      |
- * `-------------+------+------+------|				|------+------+------+-------------'
- * 	           	 | Mute |  OS  | Space|     	|Sp/Ctl| Raise| Game |
- *			 	       `--------------------'			  `--------------------'
+ * ,----------------------------------.       ,----------------------------------.
+ * |  Tab |   Q  |   W  |   E  |   R  |       |      |      |      |      |      |
+ * |------+------+------+------+------|       |------+------+------+------+------|
+ * | Shift|   A  |   S  |   D  |   F  |       |      |      |      |  Up  |      |
+ * |------+------+------+------+------|       |------+------+------+------+------|
+ * | Ctrl |      |      |      |   V  |       |      |      | Left | Down | Right|
+ * `-------------+------+------+------|       |------+------+------+-------------'
+ *               | Mute |OS/Lwr| Space|       |Sp/Sft| Raise| Game |
+ *               `--------------------'       `--------------------'
  */
 [_Game] = LAYOUT_split_3x5_3(
   KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  KC_LSFT,   KC_A,    KC_S,    KC_D,    KC_F,       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  KC_LCTL,   XXXXXXX, XXXXXXX, XXXXXXX, KC_V,       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                    KC_MUTE, KC_LGUI, KC_SPC,       _______, _______, _______,
+  KC_LSFT,   KC_A,    KC_S,    KC_D,    KC_F,       XXXXXXX, XXXXXXX, XXXXXXX, KC_UP,   XXXXXXX,
+  KC_LCTL,   XXXXXXX, XXXXXXX, XXXXXXX, KC_V,       XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT,
+                    KC_MUTE, _______, KC_SPC,       _______, _______, _______,
 )
 };
 
